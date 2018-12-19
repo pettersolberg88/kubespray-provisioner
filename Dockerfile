@@ -62,3 +62,6 @@ RUN apk add terraform
 RUN pip install --upgrade pip
 RUN pip install acc_provision
 RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
+
+#### Run as vault for fun and games
+USER vault
