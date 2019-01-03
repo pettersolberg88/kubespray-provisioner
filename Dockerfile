@@ -3,7 +3,7 @@ MAINTAINER Johannes Kanavin
 
 # Adding basic python and fish
 RUN apk add --update python python-dev py-pip build-base && \
-    apk add libffi-dev libressl-dev openssl openssh-client
+    apk add libffi-dev libressl-dev openssl openssh-client git
 
 
 # Adding fish shell
