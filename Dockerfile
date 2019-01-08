@@ -60,7 +60,7 @@ RUN apk add terraform
 
 #### Trying pip install for acc-provision and ansible
 RUN pip install --upgrade pip
-RUN pip install acc_provision
+RUN pip install acc_provision==1.9.9
 RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
 
 #### Run as vault for fun and games
