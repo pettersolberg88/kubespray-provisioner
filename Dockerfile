@@ -54,9 +54,35 @@ RUN set -eux; \
     apk del gnupg openssl && \
     rm -rf /root/.gnupg
     
-##### Adding Terraform
+##### Adding Terraform (with plugins)
 
 RUN apk add terraform
+
+ENV VSPHERE_VERSION=1.9.1
+ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}/terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip ./
+ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}/terraform-provider-vsphere_${VSPHERE_VERSION}_SHA256SUMS ./
+
+RUN sed -i '/.*linux_amd64.zip/!d' terraform-provider-vsphere_${VSPHERE_VERSION}_SHA256SUMS
+RUN sha256sum -cs terraform-provider-vsphere_${VSPHERE_VERSION}_SHA256SUMS
+
+RUN unzip terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip -d /usr/local/bin
+RUN rm -f terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip
+
+##### Adding Packer
+
+
+ENV PACKER_VERSION=1.3.3
+ENV PACKER_SHA256SUM=efa311336db17c0709d5069509c34c35f0d59c63dfb05f61d4572c5a26b563ea
+
+RUN apk add --update git bash wget openssl
+
+ADD https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip ./
+ADD https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_SHA256SUMS ./
+
+RUN sed -i '/.*linux_amd64.zip/!d' packer_${PACKER_VERSION}_SHA256SUMS
+RUN sha256sum -cs packer_${PACKER_VERSION}_SHA256SUMS
+RUN unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /bin
+RUN rm -f packer_${PACKER_VERSION}_linux_amd64.zip
 
 #### Trying pip install for acc-provision and ansible
 RUN pip install --upgrade pip
