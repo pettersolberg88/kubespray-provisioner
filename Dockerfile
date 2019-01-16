@@ -65,7 +65,7 @@ ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}
 RUN sed -i '/.*linux_amd64.zip/!d' terraform-provider-vsphere_${VSPHERE_VERSION}_SHA256SUMS
 RUN sha256sum -cs terraform-provider-vsphere_${VSPHERE_VERSION}_SHA256SUMS
 
-RUN unzip terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip -d /usr/local/bin
+RUN unzip terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip -d /usr/bin
 RUN rm -f terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip
 
 ##### Adding Packer
@@ -88,6 +88,7 @@ RUN rm -f packer_${PACKER_VERSION}_linux_amd64.zip
 RUN pip install --upgrade pip
 RUN pip install acc_provision==1.9.9
 RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
+RUN pip install openshift PyYAML
 
 #### Run as vault for fun and games
 USER vault
