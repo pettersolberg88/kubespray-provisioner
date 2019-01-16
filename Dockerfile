@@ -1,9 +1,11 @@
 FROM alpine:3.8
 MAINTAINER Johannes Kanavin
 
-# Adding basic python and fish
+# Adding basic stuff
 RUN apk add --update python python-dev py-pip build-base && \
-    apk add libffi-dev libressl-dev openssl openssh-client git
+    apk add libffi-dev libressl-dev openssl openssh-client && \
+    apk add git openssh nmap nmap-scripts curl tcpdump bind-tools && \
+    apk add jq nmap-ncat 
 
 
 # Adding fish shell
@@ -86,6 +88,11 @@ RUN sed -i '/.*linux_amd64.zip/!d' packer_${PACKER_VERSION}_SHA256SUMS
 RUN sha256sum -cs packer_${PACKER_VERSION}_SHA256SUMS
 RUN unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /bin
 RUN rm -f packer_${PACKER_VERSION}_linux_amd64.zip
+
+#### Adding kubectl
+RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/linux/amd64/kubectl && \
+  chmod +x /usr/bin/kubectl
+
 
 #### Trying pip install for acc-provision and ansible
 RUN pip install --upgrade pip
