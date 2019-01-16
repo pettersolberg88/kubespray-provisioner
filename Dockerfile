@@ -9,6 +9,9 @@ RUN apk add --update python python-dev py-pip build-base && \
 # Adding fish shell
 RUN apk add fish
 
+# Adding nano and vim
+RUN apk add vim nano
+
 ##### From https://github.com/hashicorp/docker-vault
 # This is the release of Vault to pull in.
 ENV VAULT_VERSION=1.0.1
