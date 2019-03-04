@@ -5,7 +5,7 @@ MAINTAINER Johannes Kanavin
 RUN apk add --update python python-dev py-pip build-base && \
     apk add libffi-dev libressl-dev openssl openssh-client && \
     apk add git openssh nmap nmap-scripts curl tcpdump bind-tools && \
-    apk add jq nmap-ncat 
+    apk add jq nmap-ncat && \
     apk add python3 python3-dev python
 
 # Adding fish shell
