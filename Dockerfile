@@ -99,9 +99,6 @@ RUN pip install --upgrade pip
 RUN pip install acc_provision==1.9.9
 RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
 RUN pip install openshift PyYAML
-RUN pip install docker-py
-RUN pip install docker
-RUN pip3 install docker
 
 #### Run as vault for fun and games
 USER vault
