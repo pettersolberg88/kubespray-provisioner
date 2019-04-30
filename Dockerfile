@@ -96,7 +96,7 @@ RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-releas
 
 #### Trying pip install for acc-provision and ansible
 RUN pip install --upgrade pip
-RUN pip install acc_provision==1.9.9
+RUN pip install acc_provision==4.1.1.2
 RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
 RUN pip install openshift PyYAML
 
