@@ -100,5 +100,8 @@ RUN pip install acc_provision==4.1.1.2
 RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
 RUN pip install openshift PyYAML
 
+#### AWS CLI for eazy S3 management
+RUN pip install awscli
+
 #### Run as vault for fun and games
 USER vault
