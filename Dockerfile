@@ -1,5 +1,5 @@
 FROM alpine:3.8
-MAINTAINER Johannes Kanavin
+MAINTAINER PSO++
 
 # Adding basic stuff
 RUN apk add --update python python-dev py-pip build-base && \
@@ -16,7 +16,7 @@ RUN apk add vim nano
 
 ##### From https://github.com/hashicorp/docker-vault
 # This is the release of Vault to pull in.
-ENV VAULT_VERSION=1.0.1
+ENV VAULT_VERSION=1.2.2
 
 # Create a vault user and group first so the IDs get set the same way,
 # even as the rest of this may change over time.
@@ -63,7 +63,7 @@ RUN set -eux; \
 
 RUN apk add terraform
 
-ENV VSPHERE_VERSION=1.9.1
+ENV VSPHERE_VERSION=1.12.0
 ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}/terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip ./
 ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}/terraform-provider-vsphere_${VSPHERE_VERSION}_SHA256SUMS ./
 
@@ -76,7 +76,7 @@ RUN rm -f terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip
 ##### Adding Packer
 
 
-ENV PACKER_VERSION=1.3.3
+ENV PACKER_VERSION=1.4.3
 ENV PACKER_SHA256SUM=efa311336db17c0709d5069509c34c35f0d59c63dfb05f61d4572c5a26b563ea
 
 RUN apk add --update git bash wget openssl
@@ -90,7 +90,7 @@ RUN unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /bin
 RUN rm -f packer_${PACKER_VERSION}_linux_amd64.zip
 
 #### Adding kubectl
-RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.13.5/bin/linux/amd64/kubectl && \
+RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.15.3/bin/linux/amd64/kubectl && \
   chmod +x /usr/bin/kubectl
 
 
