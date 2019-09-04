@@ -103,8 +103,8 @@ RUN pip install openshift PyYAML
 #### json_query
 RUN pip install jmespath
 
-#### AWS CLI for eazy S3 management
-RUN pip install awscli
+#### AWS CLI + aws_s3 for eazy S3 management
+RUN pip install awscli boto3 botocore
 
 #### Run as vault for fun and games
 USER vault
