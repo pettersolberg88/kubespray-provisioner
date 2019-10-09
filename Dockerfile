@@ -101,7 +101,7 @@ RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
 RUN pip install openshift PyYAML
 
 #### sshpass
-RUN pip install sshpass
+RUN apk add sshpass
 
 #### json_query
 RUN pip install jmespath
