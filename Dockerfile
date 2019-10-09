@@ -100,6 +100,9 @@ RUN pip install acc_provision==4.1.1.2
 RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
 RUN pip install openshift PyYAML
 
+#### sshpass
+RUN pip install sshpass
+
 #### json_query
 RUN pip install jmespath
 
