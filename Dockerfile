@@ -63,7 +63,7 @@ RUN set -eux; \
 
 RUN apk add terraform
 
-ENV VSPHERE_VERSION=1.12.0
+ENV VSPHERE_VERSION=1.13.0
 ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}/terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip ./
 ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}/terraform-provider-vsphere_${VSPHERE_VERSION}_SHA256SUMS ./
 
