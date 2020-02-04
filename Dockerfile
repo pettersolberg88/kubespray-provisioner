@@ -63,7 +63,7 @@ RUN set -eux; \
 
 RUN apk add terraform
 
-ENV VSPHERE_VERSION=1.13.0
+ENV VSPHERE_VERSION=1.16.0
 ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}/terraform-provider-vsphere_${VSPHERE_VERSION}_linux_amd64.zip ./
 ADD https://releases.hashicorp.com/terraform-provider-vsphere/${VSPHERE_VERSION}/terraform-provider-vsphere_${VSPHERE_VERSION}_SHA256SUMS ./
 
@@ -94,9 +94,8 @@ RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-releas
   chmod +x /usr/bin/kubectl
 
 
-#### Trying pip install for acc-provision and ansible
+#### Trying pip install for ansible
 RUN pip install --upgrade pip
-RUN pip install acc_provision==4.1.1.2
 RUN pip install ansible netaddr pbr hvac ansible-modules-hashivault
 RUN pip install openshift PyYAML
 
